@@ -7,6 +7,7 @@ class Traceable
 {
     public function __construct(
         public readonly ?string $tracer = null,
+        public readonly ?float $ratio = null,
     ) {
     }
 }

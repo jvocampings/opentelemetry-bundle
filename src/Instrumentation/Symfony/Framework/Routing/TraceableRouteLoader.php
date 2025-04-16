@@ -13,6 +13,7 @@ class TraceableRouteLoader implements LoaderInterface
     public const DEFAULT_KEY = '_traceable';
     public const TRACER_KEY = '_tracer';
     public const OPTION_KEY = 'traceable';
+    public const SAMPLING_RATIO_KEY = '_sampling_ratio';
 
     public function __construct(private LoaderInterface $loader)
     {
@@ -31,6 +32,7 @@ class TraceableRouteLoader implements LoaderInterface
                 $route->addDefaults([
                     self::DEFAULT_KEY => $traceable,
                     self::TRACER_KEY => $route->getOption(self::TRACER_KEY),
+                    self::SAMPLING_RATIO_KEY => $route->getOption(self::SAMPLING_RATIO_KEY),
                 ]);
             }
         }
@@ -77,6 +79,7 @@ class TraceableRouteLoader implements LoaderInterface
             $route->addOptions([
                 self::OPTION_KEY => true,
                 self::TRACER_KEY => $traceable->tracer ?? null,
+                self::SAMPLING_RATIO_KEY => $traceable->ratio ?? null,
             ]);
         }
     }
